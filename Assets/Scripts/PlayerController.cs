@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour {
     }
     void Update() {
         Vector3 currentPosition = rb.position;
-        if (Input.GetKey("space") && rb.position.y < .55)
+        if (Input.GetKeyDown("space") && Mathf.Abs(rb.velocity.y) < .01)
         {
             print("jump");
             rb.AddExplosionForce(300, currentPosition, 100);
