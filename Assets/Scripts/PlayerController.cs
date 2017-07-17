@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -8,9 +9,18 @@ public class PlayerController : MonoBehaviour {
 
     public float speedMultiplier;
 
+    private int winCount = 8;
+
+    private int count;
+    public Text countText;
+    public Text winText;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        count = 0;
+        setCountText();
+        winText.text = "";
     }
 
 	void FixedUpdate () {
@@ -35,6 +45,23 @@ public class PlayerController : MonoBehaviour {
         if(other.gameObject.CompareTag("Pick Up"))
         {
             other.gameObject.SetActive(false);
+            evaluateWinCondition();
+        }
+    }
+
+    void setCountText()
+    {
+        countText.text = "Count: " + count.ToString();
+    }
+
+    void evaluateWinCondition()
+    {
+        count = count + 1;
+        setCountText();
+        if(count >= winCount)
+        {
+            winText.text = "You Win!!!";
+            countText.text = "";
         }
     }
 }
