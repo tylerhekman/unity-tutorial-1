@@ -1230,6 +1230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: 10
+  jumpMultiplier: 3
   countText: {fileID: 2083151062}
   winText: {fileID: 2047212537}
 --- !u!54 &1241701197

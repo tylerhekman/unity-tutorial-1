@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour {
 
     public float speedMultiplier;
 
+	public float jumpMultiplier;
+	private Vector3 jumpVector = new Vector3(0.0f, 2.0f, 0.0f);
+
     private int winCount = 8;
 
     private int count;
@@ -36,7 +39,8 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetButtonDown("Jump") && Mathf.Abs(rb.velocity.y) < .01)
         {
             print("jump");
-            rb.AddExplosionForce(300, currentPosition, 100);
+//            rb.AddExplosionForce(300, currentPosition, 100);
+			rb.AddForce(jumpVector * jumpMultiplier, ForceMode.Impulse);
         }
     }
 
