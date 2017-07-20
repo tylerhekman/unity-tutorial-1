@@ -1534,7 +1534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd080133732e4a6e806ae8b441c5ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  follower: {fileID: 2145279905}
+  following: {fileID: 2145279905}
   followSpeed: 0.1
 --- !u!23 &1304786089
 MeshRenderer:
@@ -1576,7 +1576,7 @@ SphereCollider:
   m_GameObject: {fileID: 1304786086}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -1995,7 +1995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd080133732e4a6e806ae8b441c5ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  follower: {fileID: 1938150341}
+  following: {fileID: 1938150341}
   followSpeed: 0.3
 --- !u!23 &1579055044
 MeshRenderer:
@@ -2037,7 +2037,7 @@ SphereCollider:
   m_GameObject: {fileID: 1579055041}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -2561,7 +2561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd080133732e4a6e806ae8b441c5ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  follower: {fileID: 1579055041}
+  following: {fileID: 1579055041}
   followSpeed: 0.2
 --- !u!23 &2145279908
 MeshRenderer:
@@ -2603,7 +2603,7 @@ SphereCollider:
   m_GameObject: {fileID: 2145279905}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
