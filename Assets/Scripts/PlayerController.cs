@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 velocity = rb.velocity;
 
-        Vector3 behind = rb.position - normalizeVelocity(velocity);
+		Vector3 behind = rb.position - (normalizeVelocity(velocity) * followDistance);
         follower.transform.position = behind;
     }
     void Update() {
@@ -82,6 +82,6 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 normalizedVelocity = velocity;
         normalizedVelocity.y = 0;
-        return normalizedVelocity.normalized * followDistance;
+        return normalizedVelocity.normalized;
     }
 }
