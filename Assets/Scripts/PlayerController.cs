@@ -24,13 +24,35 @@ public class PlayerController : MonoBehaviour
     public GameObject follower;
     private int followDistance = 2;
 
+	public GameObject follower2;
+	public GameObject follower3;
+	public GameObject follower4;
+	public GameObject follower5;
+	public GameObject follower6;
+	public GameObject follower7;
+	public GameObject follower8;
+
+	GameObject[] followerChain = new GameObject[8];
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         count = 0;
         setCountText();
         winText.text = "";
-    }
+
+		followerChain [0] = follower;
+		followerChain [1] = follower2;
+		followerChain [2] = follower3;
+		followerChain [3] = follower4;
+		followerChain [4] = follower5;
+		followerChain [5] = follower6;
+		followerChain [6] = follower7;
+		followerChain [7] = follower8;
+		foreach (GameObject follower in followerChain) {
+			follower.SetActive (false);
+		}
+	}
 
     void FixedUpdate()
     {
@@ -69,6 +91,7 @@ public class PlayerController : MonoBehaviour
 
     void evaluateWinCondition()
     {
+		followerChain [count].SetActive (true);
         count = count + 1;
         setCountText();
         if(count >= winCount)
