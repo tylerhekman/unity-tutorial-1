@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 		followerChain [6] = follower7;
 		followerChain [7] = follower8;
 		foreach (GameObject follower in followerChain) {
-			follower.SetActive (false);
+			follower.GetComponent<Renderer> ().enabled = false;
 		}
 	}
 
@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
 
     void evaluateWinCondition()
     {
-		followerChain [count].SetActive (true);
+		followerChain [count].GetComponent<Renderer> ().enabled = true;
         count = count + 1;
         setCountText();
         if(count >= winCount)
