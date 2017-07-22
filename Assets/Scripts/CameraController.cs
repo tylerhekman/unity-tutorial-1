@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour {
 	}
 
 	void Update() {
-		scrollOffset = scrollOffset + (Input.GetAxis ("Mouse ScrollWheel") * normalizedOffset);
+		scrollOffset = scrollOffset - (Input.GetAxis ("Mouse ScrollWheel") * normalizedOffset);
 	}
 
 	// Update is called once per frame
