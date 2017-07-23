@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetButtonDown ("Fire3")) {
+		if (Input.GetButtonDown ("Fire3") && count > 0) {
 			collectibles [count - 1].transform.position = followerChain [count - 1].transform.position;
 			collectibles [count-1].SetActive (true);
 			followerChain [count - 1].GetComponent<Renderer> ().enabled = false;

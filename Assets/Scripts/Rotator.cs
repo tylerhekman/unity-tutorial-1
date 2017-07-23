@@ -13,6 +13,10 @@ public class Rotator : MonoBehaviour {
         y0 = transform.position.y;
     }
 
+	void OnEnable() {
+		y0 = transform.position.y;
+	}
+
 	// Update is called once per frame
 	void Update () {
         transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
