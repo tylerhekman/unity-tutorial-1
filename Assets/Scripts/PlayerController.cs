@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Pick Up"))
         {
             other.gameObject.SetActive(false);
+			GameObject collectible = other.gameObject;
+			gameController.collect (collectible);
 			gameController.evaluateWinCondition ();
         }
     }

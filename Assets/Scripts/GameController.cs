@@ -21,14 +21,7 @@ public class GameController : MonoBehaviour {
 	private int followDistance = 2;
 	GameObject[] followerChain = new GameObject[8];
 
-	public GameObject collectible1;
-	public GameObject collectible2;
-	public GameObject collectible3;
-	public GameObject collectible4;
-	public GameObject collectible5;
-	public GameObject collectible6;
-	public GameObject collectible7;
-	public GameObject collectible8;
+	GameObject[] collectibles = new GameObject[8];
 
 	//SCORING
 	private int winCount = 8;
@@ -57,7 +50,12 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Update () {
-		
+		if (Input.GetButtonDown ("Fire3")) {
+			collectibles [count - 1].transform.position = followerChain [count - 1].transform.position;
+			collectibles [count-1].SetActive (true);
+			followerChain [count - 1].GetComponent<Renderer> ().enabled = false;
+			count = count - 1;
+		}
 	}
 
 	void FixedUpdate() {
@@ -65,6 +63,10 @@ public class GameController : MonoBehaviour {
 
 		Vector3 behind = playerRigidBody.position - (normalizeVelocity(velocity) * followDistance);
 		follower1.transform.position = behind;
+	}
+
+	public void collect(GameObject collectible) {
+		collectibles [count] = collectible;
 	}
 
 	void setCountText()
