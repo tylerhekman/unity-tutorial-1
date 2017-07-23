@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+	public GameController gameController;
+
     private Rigidbody rb;
 
     //SPEED
@@ -14,44 +15,9 @@ public class PlayerController : MonoBehaviour
 	public float jumpMultiplier;
 	private Vector3 jumpVector = new Vector3(0.0f, 2.0f, 0.0f);
 
-    //SCORING
-    private int winCount = 8;
-    private int count;
-    public Text countText;
-    public Text winText;
-
-    //FOLLOWER
-    public GameObject follower;
-    private int followDistance = 2;
-
-	public GameObject follower2;
-	public GameObject follower3;
-	public GameObject follower4;
-	public GameObject follower5;
-	public GameObject follower6;
-	public GameObject follower7;
-	public GameObject follower8;
-
-	GameObject[] followerChain = new GameObject[8];
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        count = 0;
-        setCountText();
-        winText.text = "";
-
-		followerChain [0] = follower;
-		followerChain [1] = follower2;
-		followerChain [2] = follower3;
-		followerChain [3] = follower4;
-		followerChain [4] = follower5;
-		followerChain [5] = follower6;
-		followerChain [6] = follower7;
-		followerChain [7] = follower8;
-		foreach (GameObject follower in followerChain) {
-			follower.GetComponent<Renderer> ().enabled = false;
-		}
 	}
 
     void FixedUpdate()
@@ -62,11 +28,6 @@ public class PlayerController : MonoBehaviour
         Vector3 v3 = new Vector3(moveHorizontal, 0, moveVertical);
 
         rb.AddForce(speedMultiplier * v3);
-
-        Vector3 velocity = rb.velocity;
-
-		Vector3 behind = rb.position - (normalizeVelocity(velocity) * followDistance);
-        follower.transform.position = behind;
     }
     void Update() {
         if (Input.GetButtonDown("Jump") && Mathf.Abs(rb.velocity.y) < .01)
@@ -80,31 +41,7 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Pick Up"))
         {
             other.gameObject.SetActive(false);
-            evaluateWinCondition();
+			gameController.evaluateWinCondition ();
         }
-    }
-
-    void setCountText()
-    {
-        countText.text = "Count: " + count.ToString();
-    }
-
-    void evaluateWinCondition()
-    {
-		followerChain [count].GetComponent<Renderer> ().enabled = true;
-        count = count + 1;
-        setCountText();
-        if(count >= winCount)
-        {
-            winText.text = "You Win!!!";
-            countText.text = "";
-        }
-    }
-    
-    Vector3 normalizeVelocity(Vector3 velocity)
-    {
-        Vector3 normalizedVelocity = velocity;
-        normalizedVelocity.y = 0;
-        return normalizedVelocity.normalized;
     }
 }
