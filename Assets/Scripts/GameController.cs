@@ -65,6 +65,7 @@ public class GameController : MonoBehaviour {
 	public void dropCollectible() {
 		int updatedCount = count - 1;
 		Vector3 lastFollowerPosition = followerChain [updatedCount].transform.position;
+		lastFollowerPosition.y = Mathf.Max (1, lastFollowerPosition.y);
 		collectibles [updatedCount].transform.position = lastFollowerPosition;
 		collectibles [updatedCount].SetActive (true);
 		followerChain [updatedCount].GetComponent<Renderer> ().enabled = false;
