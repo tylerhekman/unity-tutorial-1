@@ -51,10 +51,7 @@ public class GameController : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetButtonDown ("Fire3") && count > 0) {
-			collectibles [count - 1].transform.position = followerChain [count - 1].transform.position;
-			collectibles [count-1].SetActive (true);
-			followerChain [count - 1].GetComponent<Renderer> ().enabled = false;
-			count = count - 1;
+			dropCollectible ();
 		}
 	}
 
@@ -63,6 +60,15 @@ public class GameController : MonoBehaviour {
 
 		Vector3 behind = playerRigidBody.position - (normalizeVelocity(velocity) * followDistance);
 		follower1.transform.position = behind;
+	}
+
+	public void dropCollectible() {
+		int updatedCount = count - 1;
+		Vector3 lastFollowerPosition = followerChain [updatedCount].transform.position;
+		collectibles [updatedCount].transform.position = lastFollowerPosition;
+		collectibles [updatedCount].SetActive (true);
+		followerChain [updatedCount].GetComponent<Renderer> ().enabled = false;
+		count = updatedCount;
 	}
 
 	public void collect(GameObject collectible) {
