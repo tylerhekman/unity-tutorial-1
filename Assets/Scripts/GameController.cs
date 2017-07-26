@@ -75,6 +75,7 @@ public class GameController : MonoBehaviour {
     }
 
     public void collect(GameObject collectible) {
+        collectible.GetComponent<Rotator>().resetSpeed();
 		collectibles [count] = collectible;
 	}
 
