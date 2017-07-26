@@ -70,9 +70,11 @@ public class GameController : MonoBehaviour {
 		collectibles [updatedCount].SetActive (true);
 		followerChain [updatedCount].GetComponent<Renderer> ().enabled = false;
 		count = updatedCount;
-	}
+        updateWinText();
+        setCountText();
+    }
 
-	public void collect(GameObject collectible) {
+    public void collect(GameObject collectible) {
 		collectibles [count] = collectible;
 	}
 
@@ -81,16 +83,25 @@ public class GameController : MonoBehaviour {
 		countText.text = "Count: " + count.ToString();
 	}
 
+    void updateWinText()
+    {
+        if (count >= winCount)
+        {
+            winText.text = "You Win!!!";
+            countText.text = "";
+        }
+        else
+        {
+            winText.text = "";
+        }
+    }
+
 	public void evaluateWinCondition()
 	{
 		followerChain [count].GetComponent<Renderer> ().enabled = true;
 		count = count + 1;
 		setCountText();
-		if(count >= winCount)
-		{
-			winText.text = "You Win!!!";
-			countText.text = "";
-		}
+        updateWinText();
 	}
 
 	Vector3 normalizeVelocity(Vector3 velocity)

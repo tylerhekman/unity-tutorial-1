@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43748975, g: 0.48531103, b: 0.56558573, a: 1}
+  m_IndirectSpecularColor: {r: 0.43749017, g: 0.4853112, b: 0.56558603, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -256,14 +256,6 @@ MonoBehaviour:
   follower6: {fileID: 1335424427}
   follower7: {fileID: 2027902960}
   follower8: {fileID: 573819105}
-  collectible1: {fileID: 1728785613}
-  collectible2: {fileID: 1075015972}
-  collectible3: {fileID: 745437027}
-  collectible4: {fileID: 769057456}
-  collectible5: {fileID: 1487921665}
-  collectible6: {fileID: 1384633048}
-  collectible7: {fileID: 418588992}
-  collectible8: {fileID: 1576341299}
   countText: {fileID: 2083151062}
   winText: {fileID: 2047212537}
 --- !u!4 &232840060
@@ -448,11 +440,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 312546991}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &418588992 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1312925877147010, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
-    type: 2}
-  m_PrefabInternal: {fileID: 625741076}
 --- !u!1001 &433262327
 Prefab:
   m_ObjectHideFlags: 0
@@ -781,16 +768,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &745437027 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1312925877147010, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
-    type: 2}
-  m_PrefabInternal: {fileID: 1120123143}
---- !u!1 &769057456 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1312925877147010, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
-    type: 2}
-  m_PrefabInternal: {fileID: 1834613677}
 --- !u!1001 &818397614
 Prefab:
   m_ObjectHideFlags: 0
@@ -1264,11 +1241,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1017164513}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1075015972 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1312925877147010, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
-    type: 2}
-  m_PrefabInternal: {fileID: 565192830}
 --- !u!1 &1096587079 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1455087920944982, guid: ce43dc23f60b142ccb767192b2c28d44,
@@ -2182,11 +2154,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce43dc23f60b142ccb767192b2c28d44, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1384633048 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1312925877147010, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
-    type: 2}
-  m_PrefabInternal: {fileID: 1152040960}
 --- !u!1 &1384661793 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1455087920944982, guid: ce43dc23f60b142ccb767192b2c28d44,
@@ -2197,11 +2164,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4498423863390540, guid: ce43dc23f60b142ccb767192b2c28d44,
     type: 2}
   m_PrefabInternal: {fileID: 598184619}
---- !u!1 &1487921665 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1312925877147010, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
-    type: 2}
-  m_PrefabInternal: {fileID: 433262327}
 --- !u!4 &1512290403 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4261725616094562, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
@@ -2294,11 +2256,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4261725616094562, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
     type: 2}
   m_PrefabInternal: {fileID: 1152040960}
---- !u!1 &1576341299 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1312925877147010, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
-    type: 2}
-  m_PrefabInternal: {fileID: 1588164101}
 --- !u!1001 &1588164101
 Prefab:
   m_ObjectHideFlags: 0
@@ -2435,11 +2392,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1647187424}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1728785613 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1312925877147010, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
-    type: 2}
-  m_PrefabInternal: {fileID: 839948996}
 --- !u!1001 &1834613677
 Prefab:
   m_ObjectHideFlags: 0
@@ -2704,7 +2656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2049389287}
   m_Layer: 0
-  m_Name: FollwerTrain
+  m_Name: FollowerTrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
