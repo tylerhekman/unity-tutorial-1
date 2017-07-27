@@ -483,6 +483,10 @@ Prefab:
       propertyPath: m_Name
       value: SE DropZone
       objectReference: {fileID: 0}
+    - target: {fileID: 1780179539078306, guid: 8b961f848340c934cb3e2c3b4b700fed, type: 2}
+      propertyPath: m_TagString
+      value: SE DropZone
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b961f848340c934cb3e2c3b4b700fed, type: 2}
   m_IsPrefabParent: 0
@@ -909,6 +913,10 @@ Prefab:
       propertyPath: m_Name
       value: NW DropZone
       objectReference: {fileID: 0}
+    - target: {fileID: 1780179539078306, guid: 8b961f848340c934cb3e2c3b4b700fed, type: 2}
+      propertyPath: m_TagString
+      value: NW DropZone
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b961f848340c934cb3e2c3b4b700fed, type: 2}
   m_IsPrefabParent: 0
@@ -1192,6 +1200,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1729262471077282, guid: 8b961f848340c934cb3e2c3b4b700fed, type: 2}
       propertyPath: m_Name
+      value: NE DropZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780179539078306, guid: 8b961f848340c934cb3e2c3b4b700fed, type: 2}
+      propertyPath: m_TagString
       value: NE DropZone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2712,6 +2724,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1729262471077282, guid: 8b961f848340c934cb3e2c3b4b700fed, type: 2}
       propertyPath: m_Name
+      value: SW DropZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780179539078306, guid: 8b961f848340c934cb3e2c3b4b700fed, type: 2}
+      propertyPath: m_TagString
       value: SW DropZone
       objectReference: {fileID: 0}
     m_RemovedComponents: []

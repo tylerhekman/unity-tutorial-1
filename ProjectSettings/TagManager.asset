@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pick Up
-  - DropZone
+  - NE DropZone
+  - NW DropZone
+  - SE DropZone
+  - SW DropZone
   layers:
   - Default
   - TransparentFX
