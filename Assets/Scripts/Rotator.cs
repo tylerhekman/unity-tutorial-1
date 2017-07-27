@@ -40,7 +40,7 @@ public class Rotator : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("DropZone"))
+        if(other.gameObject.tag.EndsWith("DropZone"))
         {
             speed = 20;
             rotationMultiplier = 10;
