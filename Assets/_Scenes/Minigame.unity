@@ -542,6 +542,11 @@ Prefab:
       propertyPath: m_Name
       value: Pick Up (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 114802081793604552, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
+        type: 2}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 232840059}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1, type: 2}
   m_IsPrefabParent: 0
@@ -741,6 +746,11 @@ Prefab:
       propertyPath: m_Name
       value: Pick Up (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114802081793604552, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
+        type: 2}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 232840059}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1, type: 2}
   m_IsPrefabParent: 0
@@ -848,6 +858,11 @@ Prefab:
       propertyPath: m_Name
       value: Pick Up (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 114802081793604552, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
+        type: 2}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 232840059}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1, type: 2}
   m_IsPrefabParent: 0
@@ -1046,6 +1061,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5000005
       objectReference: {fileID: 0}
+    - target: {fileID: 114802081793604552, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
+        type: 2}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 232840059}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1, type: 2}
   m_IsPrefabParent: 0
@@ -1509,6 +1529,11 @@ Prefab:
       propertyPath: m_Name
       value: Pick Up (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114802081793604552, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
+        type: 2}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 232840059}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1, type: 2}
   m_IsPrefabParent: 0
@@ -1563,6 +1588,11 @@ Prefab:
       propertyPath: m_Name
       value: Pick Up (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 114802081793604552, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
+        type: 2}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 232840059}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1, type: 2}
   m_IsPrefabParent: 0
@@ -2482,6 +2512,11 @@ Prefab:
       propertyPath: m_Name
       value: Pick Up (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 114802081793604552, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
+        type: 2}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 232840059}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1, type: 2}
   m_IsPrefabParent: 0
@@ -2628,6 +2663,11 @@ Prefab:
       propertyPath: m_Name
       value: Pick Up (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114802081793604552, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1,
+        type: 2}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 232840059}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7271ecf74d14bd4b8a591dcb6d1e3e1, type: 2}
   m_IsPrefabParent: 0

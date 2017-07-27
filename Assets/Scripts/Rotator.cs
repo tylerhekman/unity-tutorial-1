@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Rotator : MonoBehaviour {
 
+    public GameController gameController;
+
     float y0;
     float amplitude = .3F;
     float initialSpeed = 2;
