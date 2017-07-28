@@ -111,4 +111,9 @@ public class GameController : MonoBehaviour {
 		normalizedVelocity.y = 0;
 		return normalizedVelocity.normalized;
 	}
+
+	public void collectibleInDropZone(string dropZoneTag) {
+		print("collectible in drop zone");
+	}
+
 }
