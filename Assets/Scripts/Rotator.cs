@@ -45,6 +45,7 @@ public class Rotator : MonoBehaviour {
             speed = 20;
             rotationMultiplier = 10;
 			gameController.collectibleInDropZone (other.gameObject.tag);
+			GetComponent<Collider> ().enabled = false;
         }
     }
 }
