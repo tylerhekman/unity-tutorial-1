@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class GameController : MonoBehaviour {
 
@@ -29,6 +30,9 @@ public class GameController : MonoBehaviour {
 	public Text countText;
 	public Text winText;
 
+	//DROPZONES
+	Dictionary<string, bool> dropZoneMap = new Dictionary<string, bool>();
+
 	void Start () {
 		playerRigidBody = player.GetComponent<Rigidbody> ();
 
@@ -47,11 +51,19 @@ public class GameController : MonoBehaviour {
 		foreach (GameObject follower in followerChain) {
 			follower.GetComponent<Renderer> ().enabled = false;
 		}
+
+		dropZoneMap.Add ("NE DropZone", false);
+		dropZoneMap.Add ("NW DropZone", false);
+		dropZoneMap.Add ("SE DropZone", false);
+		dropZoneMap.Add ("SW DropZone", false);
 	}
 
 	void Update () {
 		if (Input.GetButtonDown ("Fire3") && count > 0) {
 			dropCollectible ();
+		}
+		if (allDropZonesOccupied()) {
+			print ("all drop zones occupied");
 		}
 	}
 
@@ -113,7 +125,10 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void collectibleInDropZone(string dropZoneTag) {
-		print("collectible in drop zone");
+		dropZoneMap [dropZoneTag] = true;
 	}
 
+	bool allDropZonesOccupied() {
+		return dropZoneMap.All(dropZone => dropZone.Value.Equals(true));
+	}
 }
