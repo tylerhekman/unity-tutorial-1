@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour {
 	Dictionary<string, bool> dropZoneMap = new Dictionary<string, bool>();
 	bool dropZonesFulfilled;
 
+	private int collectibesInDropZone;
+
 	void Start () {
 		playerRigidBody = player.GetComponent<Rigidbody> ();
 
@@ -58,6 +60,8 @@ public class GameController : MonoBehaviour {
 		dropZoneMap.Add ("SE DropZone", false);
 		dropZoneMap.Add ("SW DropZone", false);
 		dropZonesFulfilled = false;
+
+		collectibesInDropZone = 0;
 	}
 
 	void Update () {
@@ -127,6 +131,14 @@ public class GameController : MonoBehaviour {
 		dropZoneMap [dropZoneTag] = true;
 		if (allDropZonesOccupied ()) {
 			print ("all drop zones occupied");
+		}
+		collectibesInDropZone = collectibesInDropZone + 1;
+		evaluateDropZones ();
+	}
+
+	void evaluateDropZones() {
+		if (collectibesInDropZone == 8) {
+			print("all collectibles in drop zones");
 		}
 	}
 
