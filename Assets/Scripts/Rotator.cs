@@ -13,11 +13,14 @@ public class Rotator : MonoBehaviour {
     private float speed;
     private float rotationMultiplier;
 
+	private Vector3 initialLocation;
+
     void Start()
     {
         y0 = transform.position.y;
         speed = initialSpeed;
         initialRotationMultiplier = 1;
+		initialLocation = transform.position;
     }
 
 	void OnEnable() {
@@ -44,8 +47,14 @@ public class Rotator : MonoBehaviour {
         {
             speed = 20;
             rotationMultiplier = 10;
-			gameController.collectibleInDropZone (other.gameObject.tag);
 			GetComponent<Collider> ().enabled = false;
+			gameController.collectibleInDropZone (other.gameObject.tag);
         }
     }
+
+	public  void resetLocation() {
+		transform.position = initialLocation;
+		resetSpeed ();
+		GetComponent<Collider> ().enabled = true;
+	}
 }
