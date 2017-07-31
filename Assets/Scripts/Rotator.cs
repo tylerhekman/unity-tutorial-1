@@ -6,12 +6,16 @@ public class Rotator : MonoBehaviour {
 
     public GameController gameController;
 
+	private Vector3 velocity = Vector3.zero;
+
     float y0;
     float amplitude = .3F;
     float initialSpeed = 2;
     float initialRotationMultiplier;
     private float speed;
     private float rotationMultiplier;
+
+	private bool moveTowardsInitialLocation;
 
 	private Vector3 initialLocation;
 
@@ -21,6 +25,7 @@ public class Rotator : MonoBehaviour {
         speed = initialSpeed;
         initialRotationMultiplier = 1;
 		initialLocation = transform.position;
+		moveTowardsInitialLocation = false;
     }
 
 	void OnEnable() {
@@ -33,6 +38,14 @@ public class Rotator : MonoBehaviour {
         Vector3 bobbingPosition = transform.position;
         bobbingPosition.y = y0 + amplitude * Mathf.Sin(speed * Time.time);
         transform.position = bobbingPosition;
+
+		if (moveTowardsInitialLocation) {
+			transform.position = Vector3.SmoothDamp (transform.position, initialLocation, ref velocity, 0.3f);
+			if (transform.position == initialLocation) {
+				moveTowardsInitialLocation = false;
+				GetComponent<Collider> ().enabled = true;
+			}
+		}
     }
 
     public void resetSpeed()
@@ -53,8 +66,6 @@ public class Rotator : MonoBehaviour {
     }
 
 	public  void resetLocation() {
-		transform.position = initialLocation;
-		resetSpeed ();
-		GetComponent<Collider> ().enabled = true;
-	}
+		moveTowardsInitialLocation = true;
+		resetSpeed ();	}
 }

@@ -148,6 +148,7 @@ public class GameController : MonoBehaviour {
 		foreach (GameObject collectible in collectibles) {
 			collectible.GetComponent<Rotator> ().resetLocation ();
 		}
+		collectibesInDropZone = 0;
 	}
 
 	bool allDropZonesOccupied() {
