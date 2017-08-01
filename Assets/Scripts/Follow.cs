@@ -9,6 +9,11 @@ public class Follow : MonoBehaviour {
 
 	private Vector3 velocity = Vector3.zero;
 
+	private float MAX_X = 19.6f;
+	private float MIN_X = -19.6f;
+	private float MAX_Z = 19.6f;
+	private float MIN_Z = -19.6f;
+
 	void Start () {
 		
 	}
@@ -18,6 +23,24 @@ public class Follow : MonoBehaviour {
 		if (distance > minFollowDistance) {
 			transform.position = Vector3.SmoothDamp (transform.position, following.transform.position, ref velocity, mapRange(distance, 1.0f, 2.0f, .4f, .2f));
 		}
+		keepFollowerInBounds ();
+	}
+
+	void keepFollowerInBounds() {
+		Vector3 boundedPosition = transform.position;
+		if (transform.position.x > MAX_X) {
+			boundedPosition.x = MAX_X;
+		}
+		if (transform.position.x < MIN_X) {
+			boundedPosition.x = MIN_X;
+		}
+		if (transform.position.z > MAX_Z) {
+			boundedPosition.z = MAX_Z;
+		}
+		if (transform.position.z < MIN_Z) {
+			boundedPosition.z = MIN_Z;
+		}
+		transform.position = boundedPosition;
 	}
 
 	float mapRange (float value, float fromSource, float toSource, float fromTarget, float toTarget)
