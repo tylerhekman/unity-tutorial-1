@@ -140,15 +140,24 @@ public class GameController : MonoBehaviour {
 			print("all collectibles in drop zones");
 			if (!allDropZonesOccupied()) {
 				resetCollectibles ();
+				resetDropZones ();
 			}
 		}
 	}
 		
 	void resetCollectibles() {
-		foreach (GameObject collectible in collectibles) {
+		foreach (var collectible in collectibles) {
 			collectible.GetComponent<Rotator> ().resetLocation ();
 		}
 		collectibesInDropZone = 0;
+	}
+
+	void resetDropZones() {
+		var keys = new List<string>(dropZoneMap.Keys);
+		foreach (string key in keys)
+		{
+			dropZoneMap [key] = false;
+		}	
 	}
 
 	bool allDropZonesOccupied() {
