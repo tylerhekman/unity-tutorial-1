@@ -144,9 +144,11 @@ public class GameController : MonoBehaviour {
 		print (collectibesInDropZone);
 		if (collectibesInDropZone == 8) {
 			print("all collectibles in drop zones");
-			if (!allDropZonesOccupied()) {
+			if (!allDropZonesOccupied ()) {
 				resetCollectibles ();
 				resetDropZones ();
+			} else {
+				deactivateAllCollectibles ();
 			}
 		}
 	}
@@ -154,6 +156,13 @@ public class GameController : MonoBehaviour {
 	void resetCollectibles() {
 		foreach (var collectible in collectibles) {
 			collectible.GetComponent<Rotator> ().resetLocation ();
+		}
+		collectibesInDropZone = 0;
+	}
+
+	void deactivateAllCollectibles() {
+		foreach (var collectible in collectibles) {
+			collectible.SetActive(false);
 		}
 		collectibesInDropZone = 0;
 	}
