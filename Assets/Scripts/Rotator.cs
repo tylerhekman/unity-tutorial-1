@@ -41,7 +41,7 @@ public class Rotator : MonoBehaviour {
 
 		if (moveTowardsInitialLocation) {
 			transform.position = Vector3.SmoothDamp (transform.position, initialLocation, ref velocity, 0.3f);
-			if (Vector3.Distance(transform.position, initialLocation) < .5) {
+			if (Vector3.Distance(transform.position, initialLocation) < .2) {
 				moveTowardsInitialLocation = false;
 				GetComponent<Collider> ().enabled = true;
 			}
