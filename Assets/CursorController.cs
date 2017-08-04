@@ -14,7 +14,7 @@ public class CursorController : MonoBehaviour {
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		int maskOfPlane = 1 << 8;
-		if (Physics.Raycast (ray, out hit, maskOfPlane)) {
+		if (Physics.Raycast (ray, out hit, Mathf.Infinity, maskOfPlane)) {
 			var position = hit.point;
 			print (position);
 		} else {
