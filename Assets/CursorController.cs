@@ -16,9 +16,9 @@ public class CursorController : MonoBehaviour {
 		int maskOfPlane = 1 << 8;
 		if (Physics.Raycast (ray, out hit, Mathf.Infinity, maskOfPlane)) {
 			var position = hit.point;
-			print (position);
+//			print (position);
 		} else {
-			print("no raycast collision");
+//			print("no raycast collision");
 		}
 	}
 }

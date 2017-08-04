@@ -11,7 +11,7 @@ public class Rotator : MonoBehaviour {
     float y0;
     float amplitude = .3F;
     float initialSpeed = 2;
-    float initialRotationMultiplier;
+    float initialRotationMultiplier = 2;
     private float speed;
     private float rotationMultiplier;
 
@@ -23,7 +23,7 @@ public class Rotator : MonoBehaviour {
     {
         y0 = transform.position.y;
         speed = initialSpeed;
-        initialRotationMultiplier = 1;
+		rotationMultiplier = initialRotationMultiplier;
 		initialLocation = transform.position;
 		moveTowardsInitialLocation = false;
     }
