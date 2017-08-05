@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CursorController : MonoBehaviour {
 
+	public GunController gunController;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,7 +18,7 @@ public class CursorController : MonoBehaviour {
 		int maskOfPlane = 1 << 8;
 		if (Physics.Raycast (ray, out hit, Mathf.Infinity, maskOfPlane)) {
 			var position = hit.point;
-//			print (position);
+			gunController.trackMouse (position);
 		} else {
 //			print("no raycast collision");
 		}
