@@ -8,7 +8,6 @@ public class GunController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -16,10 +15,15 @@ public class GunController : MonoBehaviour {
 		
 	}
 
+	void LateUpdate() {
+		transform.Rotate (90.0f, 0.0f, 0.0f);
+	}
+
 	public void trackMouse(Vector3 position) {
 		Vector3 heightAdjustedPosition = position;
 		heightAdjustedPosition.y = .5f;
 		Vector3 angle = Vector3.Normalize (heightAdjustedPosition - player.transform.position);
 		transform.position = player.transform.position + (angle * .6f);
+		transform.LookAt (heightAdjustedPosition);
 	}
 }
