@@ -16,11 +16,14 @@ public class CursorController : MonoBehaviour {
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		int maskOfPlane = 1 << 8;
-		if (Physics.Raycast (ray, out hit, Mathf.Infinity, maskOfPlane)) {
-			var position = hit.point;
-			gunController.trackMouse (position);
-		} else {
-//			print("no raycast collision");
-		}
-	}
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, maskOfPlane))
+        {
+            var position = hit.point;
+            gunController.trackMouse(position);
+            if (Input.GetMouseButtonDown(0))
+            {
+                gunController.fire(position);
+            }
+        }
+    }
 }

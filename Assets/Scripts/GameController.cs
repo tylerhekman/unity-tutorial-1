@@ -78,7 +78,7 @@ public class GameController : MonoBehaviour {
 
 		Vector3 behind = playerRigidBody.position - (normalizeVelocity(velocity) * followDistance);
 		follower1.transform.position = behind;
-		keepFollowerInBounds (follower1);
+        boundGameObject(follower1);
 	}
 
 	public void dropCollectible() {
@@ -179,20 +179,20 @@ public class GameController : MonoBehaviour {
 		return dropZoneMap.All(dropZone => dropZone.Value.Equals(true));
 	}
 
-	void keepFollowerInBounds(GameObject follower) {
-		Vector3 boundedPosition = follower.transform.position;
-		if (follower.transform.position.x > MAX_X) {
+	public void boundGameObject(GameObject gameObject) {
+		Vector3 boundedPosition = gameObject.transform.position;
+		if (gameObject.transform.position.x > MAX_X) {
 			boundedPosition.x = MAX_X;
 		}
-		if (follower.transform.position.x < MIN_X) {
+		if (gameObject.transform.position.x < MIN_X) {
 			boundedPosition.x = MIN_X;
 		}
-		if (follower.transform.position.z > MAX_Z) {
+		if (gameObject.transform.position.z > MAX_Z) {
 			boundedPosition.z = MAX_Z;
 		}
-		if (follower.transform.position.z < MIN_Z) {
+		if (gameObject.transform.position.z < MIN_Z) {
 			boundedPosition.z = MIN_Z;
 		}
-		follower.transform.position = boundedPosition;
+        gameObject.transform.position = boundedPosition;
 	}
 }

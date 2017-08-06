@@ -5,6 +5,8 @@ using UnityEngine;
 public class GunController : MonoBehaviour {
 
 	public GameObject player;
+    public GameController gameController;
+    public GameObject cursor;
 
 	// Use this for initialization
 	void Start () {
@@ -26,4 +28,12 @@ public class GunController : MonoBehaviour {
 		transform.position = player.transform.position + (angle * .6f);
 		transform.LookAt (heightAdjustedPosition);
 	}
+
+    public void fire(Vector3 position)
+    {
+        Vector3 heightAdjustedPosition = position;
+        heightAdjustedPosition.y = .5f;
+        cursor.transform.position = heightAdjustedPosition;
+        gameController.boundGameObject(cursor);
+    }
 }
