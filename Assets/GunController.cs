@@ -31,9 +31,12 @@ public class GunController : MonoBehaviour {
 
     public void fire(Vector3 position)
     {
+        cursor.GetComponent<Rigidbody>().velocity = Vector3.zero;
         Vector3 heightAdjustedPosition = position;
         heightAdjustedPosition.y = .5f;
-        cursor.transform.position = heightAdjustedPosition;
-        gameController.boundGameObject(cursor);
+        //cursor.transform.position = heightAdjustedPosition;
+        //gameController.boundGameObject(cursor);
+        cursor.transform.position = player.transform.position;
+        cursor.GetComponent<Rigidbody>().AddForce(Vector3.Normalize(heightAdjustedPosition - player.transform.position) * 10000);
     }
 }
