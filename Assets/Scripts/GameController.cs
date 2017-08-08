@@ -29,6 +29,8 @@ public class GameController : MonoBehaviour {
 
 	GameObject[] collectibles = new GameObject[8];
 
+	public GameObject projectile;
+
 	//SCORING
 	private int winCount = 8;
 	private int count;
@@ -194,5 +196,9 @@ public class GameController : MonoBehaviour {
 			boundedPosition.z = MIN_Z;
 		}
         gameObject.transform.position = boundedPosition;
+	}
+
+	public void fireProjectile(Vector3 position) {
+		projectile.transform.position = position;
 	}
 }
