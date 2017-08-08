@@ -199,6 +199,13 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void fireProjectile(Vector3 position) {
-		projectile.transform.position = position;
+		if (count > 0) {
+			projectile.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+			Vector3 angle = Vector3.Normalize (position - player.transform.position);
+			projectile.transform.position = player.transform.position + angle;
+			projectile.GetComponent<Rigidbody> ().AddForce (Vector3.Normalize (position - player.transform.position) * 1000);
+			followerChain [count - 1].GetComponent<Renderer> ().enabled = false;
+			count = count - 1;
+		}
 	}
 }
