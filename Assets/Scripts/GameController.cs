@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour {
 	GameObject[] collectibles = new GameObject[8];
 
 	public GameObject projectile;
+	bool projectileInFlight;
 
 	//SCORING
 	private int winCount = 8;
@@ -67,6 +68,9 @@ public class GameController : MonoBehaviour {
 		dropZoneMap.Add ("SW DropZone", false);
 
 		collectibesInDropZone = 0;
+
+		projectile.GetComponent<Renderer> ().enabled = false;
+		projectileInFlight = false;
 	}
 
 	void Update () {
@@ -199,13 +203,28 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void fireProjectile(Vector3 position) {
-		if (count > 0) {
-			projectile.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+		if (count > 0 && !projectileInFlight) {
+			projectile.GetComponent<Renderer> ().enabled = true;
+			projectile.GetComponent<Collider> ().enabled = true;
+			projectileInFlight = true;
 			Vector3 angle = Vector3.Normalize (position - player.transform.position);
 			projectile.transform.position = player.transform.position + angle;
 			projectile.GetComponent<Rigidbody> ().AddForce (Vector3.Normalize (position - player.transform.position) * 1000);
 			followerChain [count - 1].GetComponent<Renderer> ().enabled = false;
 			count = count - 1;
+			updateWinText();
+			setCountText();
 		}
+	}
+
+	public void projectileInDropZone() {
+		projectile.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+		projectile.GetComponent<Renderer> ().enabled = false;
+		projectile.GetComponent<Collider> ().enabled = false;
+		projectileInFlight = false;
+		Vector3 projectilePosition = projectile.transform.position;
+		projectilePosition.y = Mathf.Max (1, projectilePosition.y);
+		collectibles [count].transform.position = projectilePosition;
+		collectibles [count].SetActive (true);
 	}
 }
