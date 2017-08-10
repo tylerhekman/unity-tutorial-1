@@ -34,17 +34,19 @@ public class Rotator : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime * rotationMultiplier);
-        Vector3 bobbingPosition = transform.position;
-        bobbingPosition.y = y0 + amplitude * Mathf.Sin(speed * Time.time);
-        transform.position = bobbingPosition;
 
 		if (moveTowardsInitialLocation) {
 			transform.position = Vector3.SmoothDamp (transform.position, initialLocation, ref velocity, 0.3f);
-			if (Vector3.Distance(transform.position, initialLocation) < .2) {
+			if (Vector3.Distance (transform.position, initialLocation) < .2) {
+				y0 = transform.position.y;
 				moveTowardsInitialLocation = false;
 				GetComponent<Collider> ().enabled = true;
 			}
+		} else {
+			transform.Rotate (new Vector3 (15, 30, 45) * Time.deltaTime * rotationMultiplier);
+			Vector3 bobbingPosition = transform.position;
+			bobbingPosition.y = y0 + amplitude * Mathf.Sin (speed * Time.time);
+			transform.position = bobbingPosition;
 		}
     }
 
@@ -66,6 +68,7 @@ public class Rotator : MonoBehaviour {
     }
 
 	public  void resetLocation() {
+		print (initialLocation);
 		moveTowardsInitialLocation = true;
 		resetSpeed ();	}
 }
