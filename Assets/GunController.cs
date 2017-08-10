@@ -22,7 +22,7 @@ public class GunController : MonoBehaviour {
 
 	public void trackMouse(Vector3 position) {
 		Vector3 heightAdjustedPosition = position;
-		heightAdjustedPosition.y = .5f;
+		heightAdjustedPosition.y = player.transform.position.y;
 		Vector3 angle = Vector3.Normalize (heightAdjustedPosition - player.transform.position);
 		transform.position = player.transform.position + (angle * .6f);
 		transform.LookAt (heightAdjustedPosition);
@@ -31,7 +31,7 @@ public class GunController : MonoBehaviour {
     public void fire(Vector3 position)
     {
         Vector3 heightAdjustedPosition = position;
-        heightAdjustedPosition.y = .5f;
+		heightAdjustedPosition.y = player.transform.position.y;
 		gameController.fireProjectile(heightAdjustedPosition);
     }
 }

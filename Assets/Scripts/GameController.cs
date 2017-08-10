@@ -222,6 +222,7 @@ public class GameController : MonoBehaviour {
 		projectile.GetComponent<Collider> ().enabled = false;
 		Vector3 projectilePosition = projectile.transform.position;
 		projectilePosition.y = Mathf.Max (1, projectilePosition.y);
+		print (projectilePosition);
 		projectile.GetComponent<ProjectileController>().collectible.transform.position = projectilePosition;
 		projectile.GetComponent<ProjectileController>().collectible.SetActive (true);
 		Destroy (projectile);
