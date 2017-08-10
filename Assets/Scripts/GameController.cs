@@ -29,8 +29,7 @@ public class GameController : MonoBehaviour {
 
 	GameObject[] collectibles = new GameObject[8];
 
-	public GameObject projectile;
-	bool projectileInFlight;
+	public Transform projectilePrefab;
 
 	//SCORING
 	private int winCount = 8;
@@ -42,6 +41,7 @@ public class GameController : MonoBehaviour {
 	Dictionary<string, bool> dropZoneMap = new Dictionary<string, bool>();
 
 	private int collectibesInDropZone;
+	List<GameObject> deactivatedCollectibles = new List<GameObject>();
 
 	void Start () {
 		playerRigidBody = player.GetComponent<Rigidbody> ();
@@ -68,9 +68,6 @@ public class GameController : MonoBehaviour {
 		dropZoneMap.Add ("SW DropZone", false);
 
 		collectibesInDropZone = 0;
-
-		projectile.GetComponent<Renderer> ().enabled = false;
-		projectileInFlight = false;
 	}
 
 	void Update () {
@@ -137,7 +134,8 @@ public class GameController : MonoBehaviour {
 		return normalizedVelocity.normalized;
 	}
 
-	public void collectibleInDropZone(string dropZoneTag) {
+	public void collectibleInDropZone(GameObject collectible, string dropZoneTag) {
+		deactivatedCollectibles.Add (collectible);
 		dropZoneMap [dropZoneTag] = true;
 		if (allDropZonesOccupied ()) {
 			print ("all drop zones occupied");
@@ -160,14 +158,15 @@ public class GameController : MonoBehaviour {
 	}
 		
 	void resetCollectibles() {
-		foreach (var collectible in collectibles) {
+		foreach (var collectible in deactivatedCollectibles) {
 			collectible.GetComponent<Rotator> ().resetLocation ();
 		}
 		collectibesInDropZone = 0;
+		deactivatedCollectibles.Clear ();
 	}
 
 	void deactivateAllCollectibles() {
-		foreach (var collectible in collectibles) {
+		foreach (var collectible in deactivatedCollectibles) {
 			collectible.SetActive(false);
 		}
 		collectibesInDropZone = 0;
@@ -203,10 +202,10 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void fireProjectile(Vector3 position) {
-		if (count > 0 && !projectileInFlight) {
-			projectile.GetComponent<Renderer> ().enabled = true;
-			projectile.GetComponent<Collider> ().enabled = true;
-			projectileInFlight = true;
+		if (count > 0) {
+			var projectile = Instantiate(projectilePrefab, Vector3.zero, Quaternion.identity);
+			projectile.GetComponent<ProjectileController> ().gameController = this;
+			projectile.GetComponent<ProjectileController> ().collectible = collectibles [count - 1];
 			Vector3 angle = Vector3.Normalize (position - player.transform.position);
 			projectile.transform.position = player.transform.position + angle;
 			projectile.GetComponent<Rigidbody> ().AddForce (Vector3.Normalize (position - player.transform.position) * 1000);
@@ -217,14 +216,14 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	public void projectileInDropZone() {
+	public void projectileInDropZone(GameObject projectile) {
 		projectile.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		projectile.GetComponent<Renderer> ().enabled = false;
 		projectile.GetComponent<Collider> ().enabled = false;
-		projectileInFlight = false;
 		Vector3 projectilePosition = projectile.transform.position;
 		projectilePosition.y = Mathf.Max (1, projectilePosition.y);
-		collectibles [count].transform.position = projectilePosition;
-		collectibles [count].SetActive (true);
+		projectile.GetComponent<ProjectileController>().collectible.transform.position = projectilePosition;
+		projectile.GetComponent<ProjectileController>().collectible.SetActive (true);
+		Destroy (projectile);
 	}
 }
