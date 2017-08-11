@@ -24,7 +24,7 @@ public class ProjectileController : MonoBehaviour {
 	{
         if (col.gameObject.CompareTag("Wall"))
         {
-            var bounceVelocity = Vector3.Reflect(-col.relativeVelocity, col.contacts[0].normal);
+            var bounceVelocity = Vector3.Reflect(-col.relativeVelocity * 0.5f, col.contacts[0].normal);
             GetComponent<Rigidbody>().velocity = bounceVelocity;
         }
 	}
