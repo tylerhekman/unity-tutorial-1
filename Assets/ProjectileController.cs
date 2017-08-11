@@ -18,6 +18,10 @@ public class ProjectileController : MonoBehaviour {
 
 	void FixedUpdate() {
 		GetComponent<Rigidbody> ().velocity -= Vector3.ClampMagnitude(GetComponent<Rigidbody> ().velocity, 1) * 1 * Time.deltaTime;
+        if(GetComponent<Rigidbody>().velocity.magnitude < .2 && GetComponent<Rigidbody>().velocity.magnitude > 0)
+        {
+            gameController.reinstantiateCollectible(this.gameObject);
+        }
 	}
 
 	void OnCollisionEnter (Collision col)

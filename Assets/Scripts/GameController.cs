@@ -228,4 +228,17 @@ public class GameController : MonoBehaviour {
 		projectile.GetComponent<ProjectileController>().collectible.SetActive (true);
 		Destroy (projectile);
 	}
+
+    public void reinstantiateCollectible(GameObject projectile)
+    {
+        projectile.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        projectile.GetComponent<Renderer>().enabled = false;
+        projectile.GetComponent<Collider>().enabled = false;
+        Vector3 projectilePosition = projectile.transform.position;
+        projectilePosition.y = Mathf.Max(1, projectilePosition.y);
+        print(projectilePosition);
+        projectile.GetComponent<ProjectileController>().collectible.transform.position = projectilePosition;
+        projectile.GetComponent<ProjectileController>().collectible.SetActive(true);
+        Destroy(projectile);
+    }
 }
