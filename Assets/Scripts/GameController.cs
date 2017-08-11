@@ -206,7 +206,8 @@ public class GameController : MonoBehaviour {
 			var projectile = Instantiate(projectilePrefab, Vector3.zero, Quaternion.identity);
 			projectile.GetComponent<ProjectileController> ().gameController = this;
 			projectile.GetComponent<ProjectileController> ().collectible = collectibles [count - 1];
-			Vector3 angle = Vector3.Normalize (position - player.transform.position);
+            Physics.IgnoreCollision(projectile.GetComponent<Collider>(), player.GetComponent<Collider>());
+            Vector3 angle = Vector3.Normalize (position - player.transform.position);
 			projectile.transform.position = player.transform.position + angle;
 			projectile.GetComponent<Rigidbody> ().AddForce (Vector3.Normalize (position - player.transform.position) * 1000);
 			followerChain [count - 1].GetComponent<Renderer> ().enabled = false;

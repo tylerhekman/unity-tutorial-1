@@ -9,6 +9,7 @@ TagManager:
   - NW DropZone
   - SE DropZone
   - SW DropZone
+  - Wall
   layers:
   - Default
   - TransparentFX

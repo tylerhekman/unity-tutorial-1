@@ -22,8 +22,11 @@ public class ProjectileController : MonoBehaviour {
 
 	void OnCollisionEnter (Collision col)
 	{
-		var bounceVelocity = Vector3.Reflect (-col.relativeVelocity, col.contacts [0].normal);
-		GetComponent<Rigidbody> ().velocity = bounceVelocity;
+        if (col.gameObject.CompareTag("Wall"))
+        {
+            var bounceVelocity = Vector3.Reflect(-col.relativeVelocity, col.contacts[0].normal);
+            GetComponent<Rigidbody>().velocity = bounceVelocity;
+        }
 	}
 
 	void OnTriggerEnter(Collider other)
