@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour {
 	private int followDistance = 2;
 	GameObject[] followerChain = new GameObject[8];
 
-	GameObject[] collectibles = new GameObject[8];
+	Stack<GameObject> collectibles = new Stack<GameObject>();
 
 	public Transform projectilePrefab;
 
@@ -88,8 +88,9 @@ public class GameController : MonoBehaviour {
 		int updatedCount = count - 1;
 		Vector3 lastFollowerPosition = followerChain [updatedCount].transform.position;
 		lastFollowerPosition.y = Mathf.Max (1, lastFollowerPosition.y);
-		collectibles [updatedCount].transform.position = lastFollowerPosition;
-		collectibles [updatedCount].SetActive (true);
+		GameObject collectible = collectibles.Pop ();
+		collectible.transform.position = lastFollowerPosition;
+		collectible.SetActive (true);
 		followerChain [updatedCount].GetComponent<Renderer> ().enabled = false;
 		count = updatedCount;
         updateWinText();
@@ -98,7 +99,7 @@ public class GameController : MonoBehaviour {
 
     public void collect(GameObject collectible) {
         collectible.GetComponent<Rotator>().resetSpeed();
-		collectibles [count] = collectible;
+		collectibles.Push(collectible);
 	}
 
 	void setCountText()
@@ -205,7 +206,7 @@ public class GameController : MonoBehaviour {
 		if (count > 0) {
 			var projectile = Instantiate(projectilePrefab, Vector3.zero, Quaternion.identity);
 			projectile.GetComponent<ProjectileController> ().gameController = this;
-			projectile.GetComponent<ProjectileController> ().collectible = collectibles [count - 1];
+			projectile.GetComponent<ProjectileController> ().collectible = collectibles.Pop ();
             Physics.IgnoreCollision(projectile.GetComponent<Collider>(), player.GetComponent<Collider>());
             Vector3 angle = Vector3.Normalize (position - player.transform.position);
 			projectile.transform.position = player.transform.position + angle;
