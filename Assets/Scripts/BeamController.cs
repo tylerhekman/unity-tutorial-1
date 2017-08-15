@@ -13,19 +13,20 @@ public class BeamController : MonoBehaviour {
     {
         GetComponent<Renderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
-        velocity = Vector3.zero;
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
+
+	void FixedUpdate() {
+		velocity = player.GetComponent<Rigidbody> ().velocity;
+	}
 
     void LateUpdate()
     {
         transform.Rotate(180.0f, 0.0f, 0.0f);
-
     }
 
     public void tractorBeam(Vector3 position)
@@ -49,7 +50,16 @@ public class BeamController : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Pick Up"))
         {
-            other.gameObject.transform.position = Vector3.SmoothDamp(other.gameObject.transform.position, player.transform.position, ref velocity, 0.6f);
+			var distance = Vector3.Distance (other.gameObject.transform.position, player.transform.position);
+			var coefficient = mapRange (distance, 2.0f, 8.0f, .05f, .2f);
+            other.gameObject.transform.position = Vector3.SmoothDamp(other.gameObject.transform.position, 
+				player.transform.position, 
+				ref velocity, coefficient);
         }
     }
+
+	float mapRange (float value, float fromSource, float toSource, float fromTarget, float toTarget)
+	{
+		return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
+	}
 }
