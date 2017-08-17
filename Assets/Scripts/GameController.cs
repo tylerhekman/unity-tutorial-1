@@ -146,7 +146,6 @@ public class GameController : MonoBehaviour {
 	}
 
 	void evaluateDropZones() {
-		print (collectibesInDropZone);
 		if (collectibesInDropZone == 8) {
 			print("all collectibles in drop zones");
 			if (!allDropZonesOccupied ()) {
@@ -209,7 +208,7 @@ public class GameController : MonoBehaviour {
 			projectile.GetComponent<ProjectileController> ().collectible = collectibles.Pop ();
             Physics.IgnoreCollision(projectile.GetComponent<Collider>(), player.GetComponent<Collider>());
             Vector3 angle = Vector3.Normalize (position - player.transform.position);
-			projectile.transform.position = player.transform.position;
+			projectile.transform.position = player.transform.position + angle;
 			projectile.GetComponent<Rigidbody> ().AddForce (angle * 1000);
 			followerChain [count - 1].GetComponent<Renderer> ().enabled = false;
 			count = count - 1;
@@ -218,13 +217,25 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	public void fireAllProjectiles() {
+		GameObject[] collectiblesToFire = collectibles.ToArray ();
+		var numCollectibles = collectiblesToFire.Length;
+		var angleDelta = 360.0f / numCollectibles;
+		var angle = Random.Range (0.0f, 360.0f);
+		foreach(GameObject collectible in collectiblesToFire) {
+			var fireDirection = new Vector3(Mathf.Sin(Mathf.Deg2Rad * angle), 0.0f, Mathf.Cos(Mathf.Deg2Rad * angle));
+			fireProjectile (player.transform.position + fireDirection);
+			angle = (angle + angleDelta) % 360;
+		}
+
+	}
+
 	public void projectileInDropZone(GameObject projectile) {
 		projectile.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		projectile.GetComponent<Renderer> ().enabled = false;
 		projectile.GetComponent<Collider> ().enabled = false;
 		Vector3 projectilePosition = projectile.transform.position;
 		projectilePosition.y = Mathf.Max (1, projectilePosition.y);
-		print (projectilePosition);
 		projectile.GetComponent<ProjectileController>().collectible.transform.position = projectilePosition;
 		projectile.GetComponent<ProjectileController>().collectible.SetActive (true);
 		Destroy (projectile);
@@ -237,7 +248,6 @@ public class GameController : MonoBehaviour {
         projectile.GetComponent<Collider>().enabled = false;
         Vector3 projectilePosition = projectile.transform.position;
         projectilePosition.y = Mathf.Max(1, projectilePosition.y);
-        print(projectilePosition);
         projectile.GetComponent<ProjectileController>().collectible.transform.position = projectilePosition;
         projectile.GetComponent<ProjectileController>().collectible.SetActive(true);
         Destroy(projectile);

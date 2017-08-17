@@ -34,4 +34,8 @@ public class GunController : MonoBehaviour {
 		heightAdjustedPosition.y = player.transform.position.y;
 		gameController.fireProjectile(heightAdjustedPosition);
     }
+
+	public void fireAll() {
+		gameController.fireAllProjectiles ();
+	}
 }

@@ -21,11 +21,15 @@ public class CursorController : MonoBehaviour {
         {
             var position = hit.point;
             gunController.trackMouse(position);
-            if (Input.GetMouseButtonDown(0))
-            {
-                gunController.fire(position);
-            }
+//            if (Input.GetMouseButtonDown(0))
+//            {
+//                gunController.fire(position);
+//            }
             beamController.tractorBeam(position);
         }
+		if (Input.GetMouseButtonDown(0))
+		{
+			gunController.fireAll ();
+		}
     }
 }
