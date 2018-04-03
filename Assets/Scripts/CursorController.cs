@@ -8,28 +8,26 @@ public class CursorController : MonoBehaviour {
 	public GunController gunController;
 
 	// Use this for initialization
-	void Start () {
+	void Start() {
 
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update() {
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		int maskOfPlane = 1 << 8;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, maskOfPlane))
-        {
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, maskOfPlane)) {
             var position = hit.point;
             gunController.trackMouse(position);
-//            if (Input.GetMouseButtonDown(0))
-//            {
-//                gunController.fire(position);
-//            }
+            if (Input.GetMouseButtonDown(0)) {
+                gunController.fire(position);
+            }
             beamController.tractorBeam(position);
         }
-		if (Input.GetMouseButtonDown(0))
-		{
-			gunController.fireAll ();
-		}
+//		if (Input.GetMouseButtonDown(0))
+//		{
+//			gunController.fireAll();
+//		}
     }
 }
