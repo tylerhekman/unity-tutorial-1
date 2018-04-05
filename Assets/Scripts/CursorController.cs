@@ -7,6 +7,8 @@ public class CursorController : MonoBehaviour {
     public BeamController beamController;
 	public GunController gunController;
 
+	private float chargeTime = 0f;
+
 	// Use this for initialization
 	void Start() {
 
@@ -20,14 +22,19 @@ public class CursorController : MonoBehaviour {
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, maskOfPlane)) {
             var position = hit.point;
             gunController.trackMouse(position);
-            if (Input.GetMouseButtonDown(0)) {
-                gunController.fire(position);
-            }
+			if (Input.GetMouseButton(0)) {
+				chargeTime += Time.deltaTime;
+			}
+			if (Input.GetMouseButtonUp(0)) {
+				if (chargeTime > 1f) {
+					gunController.fireAll();
+				}
+				else {
+					gunController.fire(position);
+				}
+				chargeTime = 0f;
+			}
             beamController.tractorBeam(position);
         }
-//		if (Input.GetMouseButtonDown(0))
-//		{
-//			gunController.fireAll();
-//		}
     }
 }
